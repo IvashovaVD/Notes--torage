@@ -13,9 +13,13 @@ class RegUsers(models.Model):
 
 
 class Folders(models.Model):
-    num_user = models.ForeignKey(RegUsers, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     release_date = models.DateTimeField(auto_now_add=True)
+
+
+class Distribution(models.Model):
+    num_user = models.ForeignKey(RegUsers, on_delete=models.CASCADE)
+    numberf = models.ForeignKey(Folders, on_delete=models.CASCADE, unique=True)
 
 
 class Notes(models.Model):
@@ -27,3 +31,4 @@ class Notes(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
